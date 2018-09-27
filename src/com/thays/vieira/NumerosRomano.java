@@ -1,12 +1,8 @@
 package com.thays.vieira;
 
-import java.util.Scanner;
 import java.util.TreeMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class NumerosRomano implements Reloj   {
-	
+public class NumerosRomano implements ImprimirReloj {
 
 	private final static TreeMap<Integer, String> NUMEROS_ROMANOS = new TreeMap<Integer, String>();
 
@@ -33,7 +29,7 @@ public class NumerosRomano implements Reloj   {
 	 * puede buscar la clave más grande, menor o igual que la clave dada. Si hay una
 	 * coincidencia exacta,devuelve el símbolo romano asociado
 	 */
-	public  static String conversionRoman(int entrada) {
+	public static String conversionRoman(int entrada) {
 		int num = NUMEROS_ROMANOS.floorKey(entrada);
 		if (entrada == num) {
 			return NUMEROS_ROMANOS.get(entrada);
@@ -46,13 +42,10 @@ public class NumerosRomano implements Reloj   {
 	@Override
 	public String imprimirHoras(int segundos, int hora, int minutos) {
 		// TODO Auto-generated method stub
-				String representar_romano = conversionRoman(hora) + '\n' + conversionRoman(minutos)
-						+ '\n' + conversionRoman(segundos);
-				System.out.println(representar_romano);
-				return representar_romano;
+		String representar_romano = conversionRoman(hora) + '\n' + conversionRoman(minutos) + '\n'
+				+ conversionRoman(segundos);
+		System.out.println(representar_romano);
+		return representar_romano;
 	}
-
-
-
 
 }
