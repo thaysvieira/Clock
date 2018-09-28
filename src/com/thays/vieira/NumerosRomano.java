@@ -2,7 +2,7 @@ package com.thays.vieira;
 
 import java.util.TreeMap;
 
-public class NumerosRomano implements ImprimirReloj {
+public class NumerosRomano  implements Relojes {
 
 	private final static TreeMap<Integer, String> NUMEROS_ROMANOS = new TreeMap<Integer, String>();
 
@@ -24,28 +24,25 @@ public class NumerosRomano implements ImprimirReloj {
 
 	}
 
-	/*
-	 * El método TreeMap # floorKey tiene un papel vital en esta solución, ya que
-	 * puede buscar la clave más grande, menor o igual que la clave dada. Si hay una
-	 * coincidencia exacta,devuelve el símbolo romano asociado
-	 */
-	public static String conversionRoman(int entrada) {
-		int num = NUMEROS_ROMANOS.floorKey(entrada);
-		if (entrada == num) {
+
+
+	public String concatenarHoras(int segundos, int hora, int minutos) {
+		String representar_romano = conversionRoman(hora) + '\n' + conversionRoman(minutos) + '\n'
+				+ conversionRoman(segundos);
+		System.out.println("==========Reloj Romano=========");
+		return representar_romano;
+	}
+	
+	private String conversionRoman(int entrada) {
+		int iterar = NUMEROS_ROMANOS.floorKey(entrada);
+		if (entrada == iterar) {
 			return NUMEROS_ROMANOS.get(entrada);
 		}
 
-		return NUMEROS_ROMANOS.get(num) + conversionRoman(entrada - num);
-
+		return NUMEROS_ROMANOS.get(iterar) + conversionRoman(entrada - iterar);
 	}
 
-	@Override
-	public String imprimirHoras(int segundos, int hora, int minutos) {
-		// TODO Auto-generated method stub
-		String representar_romano = conversionRoman(hora) + '\n' + conversionRoman(minutos) + '\n'
-				+ conversionRoman(segundos);
-		System.out.println(representar_romano);
-		return representar_romano;
-	}
+
+	
 
 }

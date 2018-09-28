@@ -22,23 +22,29 @@ public class Main {
 		Properties prop = new Properties();
 
 		InputStream input = null;
-		NumerosRomano romano = new NumerosRomano();
-		RepresentaLetrasHoras berlin = new RepresentaLetrasHoras();
+
+		Relojes implementacionDeReloj = null;
 
 		try {
 
 			input = new FileInputStream("src/com/thays/vieira/config.properties");
 
-			// load a properties file
 			prop.load(input);
 
 			String property = prop.getProperty(FORMATO_SALIDAHORA);
-	
+			if (HORARIO_ROMANO.equalsIgnoreCase(property)) {
+				implementacionDeReloj = new NumerosRomano();
+			} else if (HORARIO_BERLIN.equalsIgnoreCase(property)) {
+				implementacionDeReloj = new RepresentaLetrasHoras();
+			} else {
+				System.out.println("Error: Propiedad incorrecta.");
+			}
+
 			String entradaDatos;
 			boolean datosCorrectos = false;
 
 			while (!datosCorrectos) {
-			
+
 				Scanner sc = new Scanner(System.in);
 
 				System.out.println("Escriba horas, minutos, segundos. Formato(HH:mm:ss): ");
@@ -49,44 +55,18 @@ public class Main {
 				String delimitar = ":";
 				String[] salida = entradaDatos.split(delimitar);
 
-				if (HORARIO_BERLIN.equalsIgnoreCase(property)) {
-					if (m.find()) {
+				if (m.find()) {
+					for (int j = 0; j < salida.length; j++)
+						System.out.println(salida[j]);
+					int horas = Integer.parseInt(salida[2]);
+					int minutos = Integer.parseInt(salida[0]);
+					int segundos = Integer.parseInt(salida[1]);
 
-						for (int j = 0; j < salida.length; j++)
-							System.out.println(salida[j]);
-						int horas = Integer.parseInt(salida[0]);
-						int minutos = Integer.parseInt(salida[0]);
-						int segundos = Integer.parseInt(salida[1]);
-						System.out.println("==========Reloj Berlin=========");
-						berlin.imprimirHoras(horas, minutos, segundos);
-						datosCorrectos = true;
-
-					} else {
-						System.out.println("Caracteres inadecuado");
-						datosCorrectos = false;
-					}
-
-				} else if (HORARIO_ROMANO.equalsIgnoreCase(property)) {
-					if (m.find()) {
-
-						for (int j = 0; j < salida.length; j++)
-							System.out.println(salida[j]);
-						int horas = Integer.parseInt(salida[2]);
-						int minutos = Integer.parseInt(salida[0]);
-
-						int segundos = Integer.parseInt(salida[1]);
-
-						System.out.println("==========Reloj Romano=========");
-						romano.imprimirHoras(horas, minutos, segundos);
-						datosCorrectos = true;
-
-					} else {
-						System.out.println("caracter inadecuado");
-						datosCorrectos = false;
-					}
+					System.out.println(implementacionDeReloj.concatenarHoras(horas, minutos, segundos));
+					datosCorrectos = true;
 
 				} else {
-					System.out.println("No lo ha encontrado");
+					System.out.println("Caracteres inadecuado");
 				}
 			}
 
