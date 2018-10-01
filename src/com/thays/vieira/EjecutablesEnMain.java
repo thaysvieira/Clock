@@ -9,14 +9,11 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EjecutablesEnMain {
-	public static String FORMATO_SALIDAHORA = "formatoSalidaHora";
-	public static String HORARIO_BERLIN = "Berlin";
-	public static String HORARIO_ROMANO = "Romano";
-	Relojes implementacionDeReloj = null;
-	Pattern p = Pattern.compile("^([0-1]\\d|2[0-3]):([0-5]\\d):([0-5]\\d)$");
+public abstract class EjecutablesEnMain implements Relojes {
 
-	public void cargarArchivoProperties() throws FileNotFoundException {
+	static Relojes implementacionDeReloj = null;
+
+	public static void cargarArchivoProperties() throws FileNotFoundException {
 
 		Properties prop = new Properties();
 
@@ -49,7 +46,7 @@ public class EjecutablesEnMain {
 		}
 	}
 
-	public void imprimirReloj24Horas() {
+	public static void imprimirReloj24Horas() {
 		String entradaDatos;
 		boolean datosCorrectos = false;
 
@@ -77,5 +74,7 @@ public class EjecutablesEnMain {
 			}
 		}
 	}
+
+
 
 }

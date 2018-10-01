@@ -7,11 +7,11 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 
-		EjecutablesEnMain ejecutar = new EjecutablesEnMain();
+	
 
-		ejecutar.cargarArchivoProperties();
+		EjecutablesEnMain.cargarArchivoProperties();
 
-		ejecutar.imprimirReloj24Horas();
+		EjecutablesEnMain.imprimirReloj24Horas();
 
 	}
 }
