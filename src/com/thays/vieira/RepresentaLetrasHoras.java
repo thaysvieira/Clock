@@ -29,11 +29,11 @@ public class RepresentaLetrasHoras implements Relojes {
 		return resultado;
 	}
 
-	private String concatenarLetras(int iteraciones, int pos, String color) {
+	private String concatenarLetras(int encenderLuces, int pos, String color) {
 		String fila = new String();
 		for (int i = 0; i < pos; i++) {
 
-			if (iteraciones > i) {
+			if (encenderLuces > i) {
 
 				fila += color;
 			} else
@@ -43,11 +43,11 @@ public class RepresentaLetrasHoras implements Relojes {
 		return fila;
 	}
 
-	private String colorTercerFila(int iteraci) {
+	private String colorTercerFila(int encenderLuces) {
 		String fila = new String();
 		for (int a = 1; a <= FILAGRANDE; a++) {
 
-			if (iteraci >= a) {
+			if (encenderLuces >= a) {
 				if (a % 3 == 0) {
 					fila += LUCES_ROJAS;
 				} else

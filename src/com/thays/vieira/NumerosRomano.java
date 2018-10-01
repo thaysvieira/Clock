@@ -34,12 +34,12 @@ public class NumerosRomano  implements Relojes {
 	}
 	
 	private String conversionRoman(int entrada) {
-		int iterar = NUMEROS_ROMANOS.floorKey(entrada);
-		if (entrada == iterar) {
+		int numerosNaturales = NUMEROS_ROMANOS.floorKey(entrada);
+		if (entrada == numerosNaturales) {
 			return NUMEROS_ROMANOS.get(entrada);
 		}
 
-		return NUMEROS_ROMANOS.get(iterar) + conversionRoman(entrada - iterar);
+		return NUMEROS_ROMANOS.get(numerosNaturales) + conversionRoman(entrada - numerosNaturales);
 	}
 
 
