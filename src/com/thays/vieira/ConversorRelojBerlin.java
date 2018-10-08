@@ -1,6 +1,6 @@
 package com.thays.vieira;
 
-public class RepresentaLetrasHoras implements Relojes {
+public class ConversorRelojBerlin implements ConversorHora  {
 	public static final String LUCES_APAGADAS = "O ";
 	public static final String LUCES_ROJAS = "R ";
 	public static final String LUCES_AMARILLAS = "Y ";
@@ -60,7 +60,7 @@ public class RepresentaLetrasHoras implements Relojes {
 		return fila;
 	}
 
-	public String concatenarHoras(int segundos, int hora, int minutos) {
+	public String convertirHora(int segundos, int hora, int minutos) {
 		String representar_berlin;
 
 		representar_berlin = concatenarLetras(segundos(segundos), PRIMERAFILA, LUCES_AMARILLAS) + "\n"

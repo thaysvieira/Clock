@@ -2,7 +2,7 @@ package com.thays.vieira;
 
 import java.util.TreeMap;
 
-public class NumerosRomano  implements Relojes {
+public class ConversorRelojRomano  implements ConversorHora {
 
 	private final static TreeMap<Integer, String> NUMEROS_ROMANOS = new TreeMap<Integer, String>();
 
@@ -26,8 +26,8 @@ public class NumerosRomano  implements Relojes {
 
 
 
-	public String concatenarHoras(int segundos, int hora, int minutos) {
-		String representar_romano = conversionRoman(hora) + '\n' + conversionRoman(minutos) + '\n'
+	public String convertirHora(int segundos, int hora, int minutos) {
+		String representar_romano = conversionRoman(hora) + ':' + conversionRoman(minutos) + ':'
 				+ conversionRoman(segundos);
 		System.out.println("==========Reloj Romano=========");
 		return representar_romano;
